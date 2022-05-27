@@ -14,6 +14,7 @@ public class FideliusApplication {
 
     public static void main(String[] args) throws Exception {
         switch(args[0]) {
+            case "e":
             case "encryption": {
                 int i = 0;
                 final String receiverPublicKey = args[++i];
@@ -28,6 +29,7 @@ public class FideliusApplication {
                 System.out.println("keyToShare: " + encrypt.getKeyToShare());
                 break;
             }
+            case "d":
             case "decryption": {
                 int i = 0;
                 final String receiverPrivateKey = args[++i];
@@ -41,6 +43,7 @@ public class FideliusApplication {
                 System.out.println("decryptedData: " + decrypt.getDecryptedData());
                 break;
             }
+            case "k":
             case "keys-generate": {
                 KeyMaterial keyMaterial = new KeysController().generate();
                 System.out.println("publicKey: " + keyMaterial.getPublicKey());
@@ -48,6 +51,8 @@ public class FideliusApplication {
                 System.out.println("nonce: " + keyMaterial.getNonce());
                 break;
             }
+            default:
+                throw new IllegalArgumentException("unknown command");
         }
     }
 
