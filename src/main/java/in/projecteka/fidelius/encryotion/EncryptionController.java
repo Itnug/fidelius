@@ -14,9 +14,6 @@ import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.jce.spec.ECPrivateKeySpec;
 import org.bouncycastle.jce.spec.ECPublicKeySpec;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.KeyAgreement;
 import java.math.BigInteger;
@@ -28,11 +25,11 @@ import java.util.Arrays;
 
 import static in.projecteka.fidelius.Constants.*;
 
-@RestController
+//@RestController
 public class EncryptionController {
 
-    @PostMapping(value = "/encrypt")
-    public EncryptionResponse encrypt(@RequestBody EncryptionRequest encryptionRequest) throws Exception {
+//    @PostMapping(value = "/encrypt")
+    public EncryptionResponse encrypt(/*@RequestBody*/ EncryptionRequest encryptionRequest) throws Exception {
 
         byte[] xorOfRandom = xorOfRandom(encryptionRequest.getSenderNonce(), encryptionRequest.getReceiverNonce());
 

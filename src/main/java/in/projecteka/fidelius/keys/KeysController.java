@@ -7,15 +7,13 @@ import org.bouncycastle.jce.interfaces.ECPrivateKey;
 import org.bouncycastle.jce.interfaces.ECPublicKey;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 import org.bouncycastle.jce.spec.ECParameterSpec;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.security.*;
 
-@RestController
+//@RestController
 public class KeysController {
 
-    @GetMapping(value = "/keys/generate", produces = "application/json")
+//    @GetMapping(value = "/keys/generate", produces = "application/json")
     public KeyMaterial generate() throws Exception {
         KeyPair keyPair = generateKeyPair();
         String receiverPrivateKey = getBase64String(getEncodedPrivateKey(keyPair.getPrivate()));

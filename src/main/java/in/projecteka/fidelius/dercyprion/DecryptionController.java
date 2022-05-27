@@ -12,9 +12,6 @@ import org.bouncycastle.crypto.params.HKDFParameters;
 import org.bouncycastle.crypto.params.KeyParameter;
 import org.bouncycastle.jce.spec.ECParameterSpec;
 import org.bouncycastle.jce.spec.ECPrivateKeySpec;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.crypto.KeyAgreement;
 import java.math.BigInteger;
@@ -24,11 +21,11 @@ import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
 import java.util.Arrays;
 
-@RestController
+//@RestController
 public class DecryptionController {
 
-    @PostMapping(value = "/decrypt")
-    public DecryptionResponse decrypt(@RequestBody DecryptionRequest decryptionRequest) throws Exception {
+//    @PostMapping(value = "/decrypt")
+    public DecryptionResponse decrypt(DecryptionRequest decryptionRequest) throws Exception {
         byte[] xorOfRandom = xorOfRandom(decryptionRequest.getSenderNonce(), decryptionRequest.getReceiverNonce());
         String decryptedData = decrypt(xorOfRandom, decryptionRequest.getReceiverPrivateKey(), decryptionRequest.getSenderPublicKey(), decryptionRequest.getEncryptedData());
         return new DecryptionResponse(decryptedData);
